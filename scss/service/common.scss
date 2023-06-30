@@ -1,0 +1,47 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+// BG
+.bg-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    width: 50%;
+
+    @include media-breakpoint-down(xxl) {
+        width: 70%;
+    }
+
+    .bg-shape-line {
+        -webkit-mask-image: url(../../img/bg-shape-line.svg);
+        -webkit-mask-repeat: no-repeat;
+        mask-image: url(../../img/bg-shape-line.svg);
+        mask-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+
+        .bg-shape-texture {
+            // display: none;
+            height: 100%;
+            width: 100%;
+            background-image: url(../../img/bg-texture-8.png);
+            background-repeat: repeat;
+            background-size: cover;
+            animation: bg-animation 1500s infinite linear;
+            // @include media-breakpoint-down(xl) {
+            //     display: block;
+            // }
+        }
+    }
+
+    .bg-shape-cover {
+        width: 100%;
+    }
+}

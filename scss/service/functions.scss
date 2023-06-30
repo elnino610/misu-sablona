@@ -1,0 +1,55 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.functions {
+    @include media-breakpoint-down(md) {
+        padding-top: pxToRem(72);
+        padding-bottom: pxToRem(72);
+    }
+    .functions-row {
+        display: flex;
+        margin-top: pxToRem(26);
+        //margin-bottom: pxToRem(50);
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(-8);
+        }
+        .col {
+            display: flex;
+            flex-direction: column;
+            @media (min-width: 1800px) {
+                width: 25%;
+            }
+        }
+    }
+    .function-content {
+        display: flex;
+        justify-content: space-between;
+        padding: pxToRem(26);
+        border: pxToRem(5) solid $color-black;
+        column-gap: pxToRem(60);
+        height: 100%;
+        background: $color-white;
+
+        @media (max-width: 1700px) {
+            column-gap: pxToRem(30);
+        }
+
+        h3 {
+            @include font-size(pxToRem(36));
+            margin-bottom: pxToRem(16);
+        }
+
+        span {
+            @include font-size(pxToRem(18));
+        }
+
+        .counter {
+            @include font-size(pxToRem(30));
+        }
+    }
+}

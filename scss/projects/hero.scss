@@ -1,0 +1,97 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.hero {
+    .hero-intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        user-select: none;
+
+        @include media-breakpoint-down(xxl) {
+            justify-content: end;
+        }
+
+        .hero-content {
+            .slash {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                margin-top: pxToRem(-20);
+
+                @media (max-width: 1900px) {
+                    margin-top: pxToRem(-16);
+                    height: pxToRem(70);
+                }
+
+                @include media-breakpoint-down(xxl) {
+                    display: none;
+                }
+            }
+
+            h1 {
+                max-width: 15%;
+                position: relative;
+
+                @include font-size(pxToRem(70));
+
+                font: {
+                    weight: 900;
+                }
+
+                @media (max-width: 1900px) {
+                    @include font-size(pxToRem(50));
+                }
+
+                @include media-breakpoint-down(xxl) {
+                    max-width: 100%;
+                }
+
+                @include media-breakpoint-down(md) {
+                    @include font-size(pxToRem(60));
+                }
+
+                @include media-breakpoint-down(sm) {
+                    @include font-size(pxToRem(70));
+                }
+            }
+
+            h3 {
+                margin-top: pxToRem(16);
+                max-width: 20%;
+
+                @media (max-width: 1600px) {
+                    max-width: 30%;
+                }
+
+                @include media-breakpoint-down(xl) {
+                    max-width: 50%;
+                }
+
+                @include media-breakpoint-down(md) {
+                    max-width: 70%;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    max-width: 100%;
+                }
+
+                @include font-size(pxToRem(40));
+
+                font: {
+                    weight: 300;
+                }
+
+                @media (max-width: 1900px) {
+                    @include font-size(pxToRem(35));
+                }
+            }
+        }
+    }
+}

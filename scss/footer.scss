@@ -1,0 +1,172 @@
+@import './colors.scss';
+@import './_functions.scss';
+
+@import './bootstrap/_functions.scss';
+@import './bootstrap/_variables.scss';
+@import './bootstrap/vendor/_rfs.scss';
+@import './bootstrap/mixins/_breakpoints.scss';
+
+footer {
+    background: $color-black;
+    color: $color-white;
+    position: relative;
+    z-index: 1;
+    .bg-shape-footer {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+        width: pxToRem(360);
+        height: 100%;
+        @include media-breakpoint-down(xl) {
+            width: pxToRem(240);
+        }
+        @include media-breakpoint-down(md) {
+            width: pxToRem(200);
+        }
+        @include media-breakpoint-down(sm) {
+            width: pxToRem(160);
+        }
+        .bg-shape-line {
+            -webkit-mask-image: url(../img/bg-shape-footer.svg);
+            -webkit-mask-repeat: no-repeat;
+            mask-image: url(../img/bg-shape-footer.svg);
+            mask-repeat: no-repeat;
+            height: 100%;
+            .bg-shape-texture {
+                height: 100%;
+                background-image: url(../img/bg-texture.png);
+                background-repeat: repeat;
+                background-position: top;
+            }
+        }
+    }
+
+    a {
+        color: $color-white;
+        text-decoration: none;
+        max-width: max-content;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: pxToRem(2);
+            transition: width .3s;
+            background-color: $color-white;
+        }
+        &:hover {
+            color: $color-white;
+            &::after {
+                width: 100%;
+            }
+        }
+
+    }
+
+    .footer-top {
+        padding: pxToRem(50) 0;
+        row-gap: pxToRem(52);
+        .footer-logo-link {
+            &::after {
+                content: none;
+            }
+            .footer-logo {
+                height: pxToRem(80);
+                @include media-breakpoint-down(sm) {
+                    height: pxToRem(100);
+                }
+            }
+        }
+
+        span {
+            @include font-size(pxToRem(15));
+            margin-bottom: pxToRem(10);
+        }
+        .link-contact {
+            line-height: 2;
+            @include font-size(pxToRem(16));
+            .arrow-btn {
+                margin-left: pxToRem(20);
+            }
+            margin-top: pxToRem(16);
+        }
+        .link {
+            @include font-size(pxToRem(25));
+            font-weight: 900;
+        }
+        .footer-social-link {
+            line-height: 2;
+            margin-bottom: pxToRem(10);
+            img {
+                margin-right: pxToRem(16);
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .footer-middle {
+        padding: pxToRem(50) 0;
+        row-gap: pxToRem(52);
+        span {
+            @include font-size(pxToRem(15));
+            margin-bottom: pxToRem(10);
+        }
+        .link {
+            @include font-size(pxToRem(18));
+            font-weight: 900;
+            line-height: 2;
+        }
+    }
+    .footer-bottom {
+        padding-top: pxToRem(50);
+        display: flex;
+        align-items: center;
+        row-gap: pxToRem(42);
+        @include font-size(pxToRem(14));
+        @include media-breakpoint-down(md) {
+            flex-direction: column-reverse;
+            padding-top: 0;
+        }
+
+        .copyright {
+            margin-bottom: pxToRem(10);
+        }
+        .home-link {
+            text-decoration: none;
+            display: inline-block;
+            .footer-bottom-logo {
+                height: pxToRem(30);
+                padding-right: pxToRem(10);
+                margin-top: pxToRem(4);
+                margin-bottom: pxToRem(4);
+            }
+        }
+        .footer-bottom-left {
+            display: flex;
+            column-gap: pxToRem(20);
+            .footer-bottom-link {
+                display: inline-block;
+                max-width: max-content;
+            }
+            @include media-breakpoint-down(md) {
+                flex-direction: row;
+                justify-content: center;
+            }
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+    .footer-line {
+        padding: pxToRem(1);
+        background-image: linear-gradient(to right, $color-white 10%, transparent 0%);
+        background-position: top;
+        background-size: pxToRem(6);
+        background-repeat: repeat-x;
+        position: relative;
+        z-index: -2;
+    }
+}

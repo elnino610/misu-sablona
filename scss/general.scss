@@ -1,0 +1,301 @@
+@import './colors.scss';
+@import './_functions.scss';
+
+@import './bootstrap/_functions.scss';
+@import './bootstrap/_variables.scss';
+@import './bootstrap/vendor/_rfs.scss';
+@import './bootstrap/mixins/_breakpoints.scss';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Display', sans-serif !important;
+    scroll-behavior: smooth !important;
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+// Common classes
+.hidden {
+    visibility: hidden;
+}
+
+// Spaces
+.mi-container {
+    padding: pxToRem(60) pxToRem(100);
+    @include media-breakpoint-down(xxl) {
+        padding: pxToRem(60) pxToRem(80);
+    }
+    @include media-breakpoint-down(xl) {
+        padding: pxToRem(60) pxToRem(60);
+    }
+    @include media-breakpoint-down(lg) {
+        padding: pxToRem(40) pxToRem(40);
+    }
+    @include media-breakpoint-down(md) {
+        padding: pxToRem(20) pxToRem(20);
+    }
+}
+
+// Cusotm scrollbar
+::-webkit-scrollbar {
+    width: pxToRem(10);
+}
+
+::-webkit-scrollbar-track {
+    background: $color-white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color-black-light;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $color-black;
+}
+
+// Font weight
+.f-300 {
+    font-weight: 300;
+}
+
+.f-400 {
+    font-weight: 400;
+}
+
+.f-500 {
+    font-weight: 500;
+}
+
+.f-600 {
+    font-weight: 600;
+}
+
+.f-700 {
+    font-weight: 700;
+}
+
+.f-800 {
+    font-weight: 800;
+}
+
+.f-900 {
+    font-weight: 900;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 900;
+}
+
+h1 {
+    @include font-size(pxToRem(70));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(60));
+    }
+}
+
+h2 {
+    @include font-size(pxToRem(60));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(50));
+    }
+}
+
+h3 {
+    @include font-size(pxToRem(50));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(40));
+    }
+}
+
+h4 {
+    @include font-size(pxToRem(40));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(30));
+    }
+}
+
+h5 {
+    @include font-size(pxToRem(30));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(25));
+    }
+}
+
+h6 {
+    @include font-size(pxToRem(25));
+    @media (max-width: 1900px) {
+        @include font-size(pxToRem(20));
+    }
+}
+
+.title-bg {
+    &:after {
+        content: "";
+        background-color: $color-soft-gray;
+        margin-top: pxToRem(-15);
+        height: pxToRem(15);
+        display: block;
+        width: calc(100% + 20px);
+        margin-left: pxToRem(-10);
+    }
+}
+
+// Buttons
+.button-primary,
+.button-transparent,
+.button-transparent-white {
+    @include font-size(pxToRem(15));
+    font-weight: 500;
+    border: pxToRem(3) solid $color-black;
+    padding: pxToRem(16) pxToRem(32);
+    text-decoration: none;
+    color: $color-black;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    @include media-breakpoint-down(xxl) {
+        padding: pxToRem(12) pxToRem(28);
+    }
+
+    .arrow-btn {
+        margin-left: pxToRem(25);
+        @include media-breakpoint-down(sm) {
+            margin-left: pxToRem(15);
+        }
+    }
+
+    &:hover:before {
+        transform: translateX(0);
+        left: pxToRem(-3);
+    }
+
+    &:before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: pxToRem(-3);
+        right: pxToRem(-60.5);
+        bottom: 0;
+        left: 0;
+        border-right: pxToRem(30) solid transparent;
+        border-bottom: pxToRem(60.5) solid $color-black;
+        transform: translateX(-100%);
+        z-index: -1;
+        transition: .3s ease-in-out;
+    }
+}
+
+.button-transparent {
+    transition: .3s ease-in-out;
+
+    .arrow-btn {
+        transition: .3s ease-in-out;
+    }
+
+    &:hover {
+        color: $color-white;
+
+        .arrow-btn {
+            filter: invert(1);
+        }
+    }
+}
+
+.button-primary {
+    color: $color-white;
+    background: $color-black;
+    transition: .3s ease-in-out;
+
+    .arrow-btn {
+        transition: .3s ease-in-out;
+    }
+
+    &:hover {
+        color: $color-black;
+
+        .arrow-btn {
+            filter: invert(1);
+        }
+    }
+
+    &:before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: pxToRem(-3);
+        right: pxToRem(-60.5);
+        bottom: 0;
+        left: 0;
+        border-right: pxToRem(30) solid transparent;
+        border-bottom: pxToRem(60.5) solid $color-white;
+        transform: translateX(-100%);
+        z-index: -1;
+        transition: .3s ease-in-out;
+    }
+}
+
+.button-transparent-white {
+    color: $color-white;
+    background: transparent;
+    border-color: $color-white;
+    transition: .3s ease-in-out;
+
+    .arrow-btn {
+        transition: .3s ease-in-out;
+    }
+
+    &:hover {
+        color: $color-black;
+        .arrow-btn {
+            filter: invert(1);
+        }
+    }
+
+    &:before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: pxToRem(-3);
+        right: pxToRem(-60.5);
+        bottom: 0;
+        left: 0;
+        border-right: pxToRem(30) solid transparent;
+        border-bottom: pxToRem(60.5) solid $color-white;
+        transform: translateX(-100%);
+        z-index: -1;
+        transition: .3s ease-in-out;
+    }
+
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: pxToRem(10000) pxToRem(10000);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,241 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.project {
+    &-col {
+        padding-right: pxToRem(100);
+        @include media-breakpoint-down(sm) {
+            padding-right: pxToRem(12);
+        }
+    }
+    &-image {
+        width: 100%;
+        box-shadow: 0 3px 20px 0 rgb(0 0 0 / 16%);
+        &-left {
+            width: calc(100% + 200px);
+            position: relative;
+            z-index: 1;
+            @include media-breakpoint-down(xl) {
+                width: 100%;
+            }
+        }
+    }
+    &-section {
+        padding-bottom: pxToRem(40);
+        @include media-breakpoint-down(md) {
+            padding-bottom: pxToRem(20);
+        }
+        &-title {
+            text-align: center;
+            @include media-breakpoint-down(md) {
+                padding-bottom: pxToRem(20);
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+    &-title {
+        color: $color-black;
+        margin-bottom: 0;
+        &-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: $color-black;
+            padding-bottom: pxToRem(20);
+            .arrow-right {
+               transition: transform .2s;
+            }
+            &[aria-expanded="true"] {
+                .arrow-right {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+    &-paragraph {
+        @include font-size(pxToRem(20));
+        @include media-breakpoint-down(sm) {
+            @include font-size(pxToRem(18));
+        }
+    }
+    &-card {
+        margin-top: pxToRem(50);
+        margin-right: pxToRem(-200);
+        padding: pxToRem(100) pxToRem(120) pxToRem(100) pxToRem(80);
+        background-color: $color-blue;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        @include media-breakpoint-down(xl) {
+            margin-right: 0;
+            margin-top: 0;
+        }
+        @include media-breakpoint-down(md) {
+            padding: pxToRem(40);
+        }
+        @include media-breakpoint-down(sm) {
+            padding: pxToRem(30);
+        }
+        h4 {
+            color: $color-white;
+            margin-bottom: 0;
+        }
+        &-signature {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-top: pxToRem(40);
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+                align-items: start;
+                row-gap: pxToRem(20);
+                margin-top: pxToRem(20);
+            }
+            &-name-position {
+                color: $color-white;
+            }
+            &-name {
+                @include font-size(pxToRem(24));
+                margin-bottom: 0;
+                line-height: 1.4;
+            }
+            &-position {
+                @include font-size(pxToRem(16));
+                margin-bottom: 0;
+            }
+            &-img-wrapper {
+                margin-right: pxToRem(-70);
+                margin-bottom: pxToRem(-100);
+                max-height: pxToRem(210);
+                position: relative;
+                @include media-breakpoint-down(md) {
+                    margin-right: pxToRem(-40);
+                    margin-bottom: pxToRem(-40);
+                }
+                @include media-breakpoint-down(sm) {
+                    margin-right: 0;
+                    margin-bottom: pxToRem(-30);
+                    max-height: pxToRem(200);
+                }
+                &-container {
+                    position: relative;
+                    @include media-breakpoint-down(sm) {
+                        align-self: center;
+                    }
+                    .slash {
+                        position: absolute;
+                        transform: scaleX(-1);
+                        z-index: 1;
+                        top: 0;
+                        left: 100%;
+                        margin-top: pxToRem(-30);
+                        margin-left: pxToRem(-15);
+                        @include media-breakpoint-down(md) {
+                            margin-left: pxToRem(-45);
+                        }
+                        @include media-breakpoint-down(sm) {
+                            margin-left: pxToRem(-75);
+                        }
+                    }
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    background: url("../../img/bg-project-card-1.svg") no-repeat left;
+                    background-size: contain;
+                    height: 100%;
+                    width: 100%;
+                    z-index: 1;
+                    top: pxToRem(-1);
+                    left: pxToRem(-1);
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    background: url("../../img/bg-project-card-2.svg") no-repeat right;
+                    background-size: contain;
+                    height: 100%;
+                    width: 100%;
+                    z-index: 1;
+                    bottom: pxToRem(-1);
+                    right: pxToRem(-1);
+                }
+            }
+            &-img {
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+    }
+    &-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: pxToRem(20);
+        padding: pxToRem(80) 0;
+        @include media-breakpoint-down(xl) {
+            row-gap: pxToRem(30);
+        }
+        @include media-breakpoint-down(md) {
+            padding: pxToRem(40) 0;
+        }
+        &-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        &-item {
+            width: 100%;
+            display: flex;
+            //flex-grow: 1;
+            //flex-basis: 0;
+            align-items: center;
+            column-gap: pxToRem(30);
+            @include media-breakpoint-down(xl) {
+                flex-direction: column;
+                text-align: center;
+            }
+            &-title {
+                width: 70%;
+                flex-shrink: 0;
+                text-align: end;
+                h2 {
+                    line-height: 1;
+                    margin-bottom: 0;
+                    display: inline-block;
+                }
+                @include media-breakpoint-down(xl) {
+                    width: auto;
+                    margin-bottom: pxToRem(5);
+                }
+            }
+            &-subtitle {
+                //width: 30%;
+                flex-shrink: 0;
+                white-space: nowrap;
+                @include font-size(pxToRem(20));
+                line-height: 1.2;
+            }
+        }
+    }
+    &-form {
+        form {
+            box-shadow: none;
+            padding: pxToRem(80) pxToRem(140);
+            @include media-breakpoint-down(xl) {
+                padding: pxToRem(80) pxToRem(70);
+            }
+            @include media-breakpoint-down(md) {
+                padding: 0 0 pxToRem(20) 0;
+            }
+        }
+    }
+}

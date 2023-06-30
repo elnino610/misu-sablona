@@ -1,0 +1,15 @@
+// Bootstrap
+@import './bootstrap/bootstrap.scss';
+
+// Swiper
+@import './swiper.scss';
+
+// Helpers
+@import './colors.scss';
+@import './_functions.scss';
+
+// Common
+@import './general.scss';
+@import './pagination.scss';
+@import './header.scss';
+@import './footer.scss';

@@ -1,0 +1,140 @@
+@import './colors.scss';
+@import './_functions.scss';
+
+@import './bootstrap/_functions.scss';
+@import './bootstrap/_variables.scss';
+@import './bootstrap/vendor/_rfs.scss';
+@import './bootstrap/mixins/_breakpoints.scss';
+
+.reviews {
+    // display: none;
+    .js-reviewsMasonry {
+        width: 100%;
+        margin: pxToRem(50) 0 pxToRem(90) 0;
+        width: 100% !important;
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(18);
+            margin-bottom: pxToRem(32);
+        }
+        .item {
+            position: absolute;
+            box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.16);
+            background: $color-white;
+            overflow: hidden;
+
+            .item-hover {
+                position: absolute;
+                bottom: pxToRem(-100);
+                visibility: hidden;
+                opacity: 0;
+                transition: .3s ease-in-out;
+                padding: pxToRem(50);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                @include media-breakpoint-down(xxl) {
+                    padding: pxToRem(32);
+                }
+
+                h5 {
+                    padding-right: pxToRem(48);
+                    margin-bottom: pxToRem(40);
+                    // @include media-breakpoint-down(xl) {
+                    //     padding-right: pxToRem(70);
+                    // }
+                    @include media-breakpoint-down(md) {
+                        padding-right: pxToRem(140);
+                        margin-bottom: pxToRem(30);
+                    }
+                    @include media-breakpoint-down(sm) {
+                        padding-right: pxToRem(0);
+                    }
+                }
+
+                .review-client {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: auto;
+                    @include font-size(pxToRem(16));
+                    margin-bottom: pxToRem(16);
+                    @include media-breakpoint-down(md) {
+                        margin-bottom: pxToRem(0);
+                    }
+                }
+
+                .slash {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    height: pxToRem(130);
+                    @include media-breakpoint-down(md) {
+                        height: pxToRem(80);
+                    }
+                }
+
+                .review-category {
+                    a {
+                        text-decoration: none;
+                        @include font-size(pxToRem(16));
+                        color: $color-black;
+                    }
+                }
+
+                .review-btn {
+                    margin-top: pxToRem(70);
+                    @include media-breakpoint-down(md) {
+                        margin-top: pxToRem(40);
+                    }
+                    a {
+                        text-decoration: none;
+                        color: $color-black;
+
+                        img {
+                            padding-left: pxToRem(8);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .review-img {
+                    transform: scale(1.05);
+                    opacity: .085;
+                }
+
+                .item-hover {
+                    visibility: visible;
+                    opacity: 1;
+                    bottom: 0;
+                }
+            }
+
+            .review-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+                transition: .3s ease-in-out;
+            }
+
+            &:nth-child(odd) {
+                height: pxToRem(500);
+            }
+
+            &:nth-child(even) {
+                height: pxToRem(780);
+            }
+        }
+    }
+    a {
+        // @include media-breakpoint-down(lg) {
+        //     width: 50%;
+        //     text-align: center;
+        // }
+        @include media-breakpoint-down(sm) {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}

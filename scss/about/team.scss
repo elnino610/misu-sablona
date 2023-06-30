@@ -1,0 +1,57 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.team {
+
+    .team-row {
+        margin-top: pxToRem(26);
+        display: flex;
+
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(-8);
+        }
+
+        img {
+            width: 100%;
+            max-height: pxToRem(400);
+            object-fit: cover;
+            object-position: top;
+            @include media-breakpoint-down(sm) {
+                max-height: pxToRem(300);
+            }
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 1800px) {
+                width: 25%;
+            }
+        }
+
+    }
+
+    .team-content {
+        background: $color-black;
+        color: $color-white;
+        padding: pxToRem(26);
+        flex-grow: 1;
+
+        h5 {
+            word-spacing: 100vw;
+        }
+
+        span {
+            @include font-size(pxToRem(18));
+        }
+
+    }
+
+
+}

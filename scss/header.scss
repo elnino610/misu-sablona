@@ -1,0 +1,392 @@
+@import './colors.scss';
+@import './_functions.scss';
+
+@import './bootstrap/_functions.scss';
+@import './bootstrap/_variables.scss';
+@import './bootstrap/vendor/_rfs.scss';
+@import './bootstrap/mixins/_breakpoints.scss';
+
+.shrink {
+    padding-top: pxToRem(8);
+    padding-bottom: pxToRem(8);
+    background-color: $color-black;
+    box-shadow: 0 0 pxToRem(50) 0 rgba(0, 0, 0, 0.16);
+
+    .navbar-left {
+        a {
+            color: $color-white !important;
+            &::after {
+                background: $color-white !important;
+            }
+        }
+    }
+
+    .navbar-right {
+        margin-top: 0 !important;
+        // a {
+        //     &::after {
+        //         background: $color-black !important;
+        //     }
+        // }
+        // a,
+        // span,
+        // .menu-btn {
+        //     color: $color-black !important;
+        //     .menu-icon {
+        //         span {
+        //             background: $color-black;
+        //         }
+        //     }
+        // }
+    }
+}
+
+header {
+    transition: padding 500ms ease, background-color 500ms ease;
+
+    .navbar {
+        z-index: 100;
+        position: relative;
+        padding: 0;
+        color: $color-white;
+
+        @include font-size(pxToRem(18));
+
+        .navbar-brand {
+            img {
+                height: pxToRem(80);
+                transition: height 500ms ease, filter 500ms linear, transform 500ms ease;
+            
+                &.invert {
+                    filter: invert(1);
+                }
+
+                &.shrink-img {
+                    height: pxToRem(64);
+                }
+
+                @include media-breakpoint-down(md) {
+                    height: pxToRem(50);
+                    &.shrink-img {
+                        height: pxToRem(50) !important;
+                    }
+                }
+            }
+        }
+
+        .navbar-left, .navbar-right {
+            a {
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: pxToRem(2);
+                    transition: width .3s;
+                    //margin-top: pxToRem(4);
+                }
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+                &.active {
+                    font-weight: 900;
+                    // &::after {
+                    //     width: 100%;
+                    //     height: pxToRem(4);
+                    // }
+                }
+            }
+        }
+
+        .navbar-right {
+            margin-top: pxToRem(-30);
+            transition: margin 500ms ease;
+            @include media-breakpoint-down(md) {
+                margin-top: pxToRem(0);
+            }
+            a {
+                &::after {
+                    background: $color-white;
+                }
+            }
+        }
+
+        .navbar-left {
+            transition: visibility 500ms ease;
+            margin-left: pxToRem(48);
+            a {
+                color: $color-black;
+                font-weight: 400;
+                &::after {
+                    background: $color-black;
+                }
+            }
+        }
+
+        span {
+            transition: color 500ms ease;
+            @include media-breakpoint-down(md) {
+                @include font-size(pxToRem(15));
+            }
+        }
+
+        a {
+            color: $color-white;
+            transition: color 500ms ease;
+        }
+
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            margin-left: pxToRem(96);
+            margin-bottom: pxToRem(4);
+            color: $color-white;
+            box-shadow: none;
+            border: none;
+            padding: pxToRem(6) 0;
+            @include font-size(pxToRem(18));
+
+            @include media-breakpoint-down(md) {
+                margin-left: 0;
+            }
+
+            .menu-icon {
+                -webkit-mask-image: url(../img/menu-icon-mask.svg);
+                mask-image: url(../img/menu-icon-mask.svg);
+                height: pxToRem(30);
+                width: pxToRem(40);
+                display: block;
+                position: relative;
+                cursor: pointer;
+                @include media-breakpoint-down(md) {
+                    height: pxToRem(25);
+                    width: pxToRem(35);
+                }
+                span {
+                    position: absolute;
+                    left: 0;
+                    height: pxToRem(4);
+                    width: 100%;
+                    background: $color-white;
+                    transition: .25s ease-in-out;
+                    @include media-breakpoint-down(md) {
+                        height: pxToRem(2);
+                    }
+                }
+
+                span:nth-child(1) {
+                    top: 0;
+                }
+
+                span:nth-child(2) {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                span:nth-child(3) {
+                    bottom: 0;
+                }
+
+                &.open {
+                    -webkit-mask-image: none;
+                    mask-image: none;
+                    span:nth-child(1) {
+                        top: pxToRem(15);
+                        transform: rotate(135deg);
+                    }
+                      
+                    span:nth-child(2) {
+                        opacity: 0;
+                        left: -60px;
+                    }
+                      
+                    span:nth-child(3) {
+                        top: pxToRem(15);
+                        transform: rotate(-135deg);
+                    }
+                    @include media-breakpoint-down(md) {
+                        margin-top: pxToRem(-8);
+                    }
+                }
+            }
+        }
+
+        .menu {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            height: 200%;
+            width: 200%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            visibility: hidden;
+            z-index: -1;
+
+            //Rotate the menu to setup for the diagonal slice
+            transform: rotate(-15deg) translate3d(0, 0, 0);
+
+            //Create two rectangles on the top and bottom half of the menu
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 50%;
+                width: 100%;
+                height: 80%;
+                background-color: $color-black;
+                transform-origin: center center;
+                transition: all 500ms linear;
+                will-change: transform;
+                z-index: -1;
+            }
+
+            &::before {
+                //Position and transition for animation Open -> Closed
+                top: 51%;
+                transform: translate(100%, -100%) translate3d(0, 0, 0);
+            }
+
+            &::after {
+                //Position and transition for animation Open -> Closed
+                top: 49%;
+                transform: translate(-150%, 0%) translate3d(0, 0, 0);
+                transition-delay: 100ms;
+            }
+
+            .nav {
+                padding-top: 0;
+                padding-bottom: 0;
+                max-height: pxToRem(400);
+                overflow-y: auto;
+                position: relative;
+                display: inline-block;
+                list-style: none;
+                width: 50%;
+
+                //Rotate nav oposite direction to counter the full menu rotation
+                transform: rotate(15deg);
+
+                &-item {
+                    margin-bottom: pxToRem(20);
+                    opacity: 0;
+                    transform: translateX(pxToRem(-15)) translate3d(0, 0, 0);
+                    transition: all 100ms ease 100ms;
+                    user-select: none;
+
+                    a {
+                        display: block;
+                        color: $color-white;
+                        @include font-size(pxToRem(40));
+                        font-weight: 700;
+                        letter-spacing: pxToRem(2);
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        &::before {
+                            content: "";
+                            display: flex;
+                            width: 0;
+                            height: pxToRem(4);
+                            transition: width .3s;
+                            background-color: $color-white;
+                        }
+                        &:hover {
+                            &::before {
+                                width: pxToRem(16);
+                            }
+                        }
+                        &.active {
+                            &::before {
+                                width: pxToRem(16);
+                            }
+                        }
+                    }
+
+                    .dropdown {
+                        &-menu {
+                            position: relative;
+                            background: transparent;
+                            border: none;
+                            padding: initial;
+                            list-style: auto;
+                            transition: all 0.5s;
+                            max-height: 0;
+                            display: block;
+                            overflow: hidden;
+                            opacity: 0;
+
+                            &.show {
+                                max-height: pxToRem(500);
+                                opacity: 1;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            &.open {
+                visibility: visible;
+
+                &::before {
+                    //Opening animation
+                    animation: menu-in-left 500ms ease;
+
+                    //Opened transform and transition
+                    transform: translate(-50%, -100%) translate3d(0, 0, 0);
+                    transition-duration: 0ms;
+                }
+
+                &::after {
+                    //Opening animation
+                    animation: menu-in-right 500ms ease 100ms;
+
+                    //Opened transform and transition
+                    transform: translate(-50%, 0%) translate3d(0, 0, 0);
+                    transition-duration: 0ms;
+                }
+
+                .nav-item {
+                    opacity: 1;
+                    transform: translateX(0) translate3d(0, 0, 0);
+                    transition: all 250ms ease;
+
+                    //Add incremental delay for menu items
+                    @for $i from 0 through 20 {
+                        &:nth-child(#{$i}n) {
+                            transition-delay: #{250 + ($i * 50)}ms;
+                        }
+                    }
+
+                    a {
+                        transition: all 250ms ease;
+                    }
+                }
+            }
+        }
+
+        //Opening animations
+        @keyframes menu-in-left {
+            0% {
+                transform: translate(-150%, -100%) translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate(-50%, -100%) translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes menu-in-right {
+            0% {
+                transform: translate(100%, 0%) translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate(-50%, 0%) translate3d(0, 0, 0);
+            }
+        }
+    }
+}

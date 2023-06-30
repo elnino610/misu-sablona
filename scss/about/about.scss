@@ -1,0 +1,94 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.about {
+    max-width: pxToRem(1330);
+    margin: pxToRem(60) auto 0 auto;
+    @include media-breakpoint-down(lg) {
+        margin: pxToRem(40) auto 0 auto;
+    }
+    @include media-breakpoint-down(md) {
+        margin: pxToRem(20) auto 0 auto;
+    }
+
+    .about-paragraphs {
+        position: relative;
+
+        &:after {
+            content: "";
+            display: none;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            width: 100%;
+            background-image: linear-gradient(to bottom,transparent,$color-white 100%);
+            height: pxToRem(260);
+        }
+
+        // @include media-breakpoint-down(lg) {
+        //     max-height: 380px;
+        //     overflow: hidden;
+        //     margin-bottom: pxToRem(30);
+        //     &:after {
+        //         display: block;
+        //     }
+        // }
+    }
+
+    h2 {
+        margin-right: pxToRem(100);
+        position: relative;
+        // max-width: pxToRem(516);
+        // @media (max-width: 1900px) {
+        //     max-width: pxToRem(296);
+        // }
+
+        @include media-breakpoint-down(lg) {
+            // max-width: 70%;
+            margin-right: 0;
+            margin-bottom: pxToRem(30);
+        }
+
+        .slash {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-top: pxToRem(-52);
+            height: pxToRem(130);
+
+            @media (max-width: 1900px) {
+                height: pxToRem(100);
+                margin-top: pxToRem(-36);
+            }
+
+            @include media-breakpoint-down(lg) {
+                height: pxToRem(80);
+                margin-top: pxToRem(-26);
+            }
+        }
+    }
+
+    p {
+        @include font-size(pxToRem(18));
+
+        &:first-child {
+            font-weight: 700;
+        }
+
+        margin-bottom: pxToRem(30);
+    }
+
+    a {
+        @include media-breakpoint-down(sm) {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}

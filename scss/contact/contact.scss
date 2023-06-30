@@ -1,0 +1,43 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.contact {
+    &-info {
+        display: flex;
+        column-gap: pxToRem(120);
+        @include media-breakpoint-down(xl) {
+            column-gap: pxToRem(60);
+        }
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+            row-gap: pxToRem(20);
+        }
+        &-item {
+            max-width: pxToRem(500);
+            &-title {
+                display: block;
+                margin-bottom: pxToRem(10);
+                @include media-breakpoint-down(md) {
+                    @include font-size(pxToRem(14));
+                }
+            }
+            h6 {
+                @include font-size(pxToRem(20));
+                margin-bottom: pxToRem(10);
+                @include media-breakpoint-down(md) {
+                    @include font-size(pxToRem(18));
+                }
+            }
+            &-content {
+                span {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,117 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.jobs {
+    margin-bottom: pxToRem(60);
+    @include media-breakpoint-down(lg) {
+        margin-bottom: pxToRem(40);
+    }
+    @include media-breakpoint-down(md) {
+        margin-bottom: pxToRem(20);
+    }
+    .jobs-row {
+        margin-top: pxToRem(26);
+        display: flex;
+
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(-8);
+            // padding-bottom: pxToRem(65);
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .jobs-content {
+        border: pxToRem(5) solid $color-black;
+        padding: pxToRem(40) pxToRem(50);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+        &:hover {
+            transform: scale(1.025);
+            box-shadow: 0 3px 20px 0 rgb(0 0 0 / 16%);
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: pxToRem(26);
+        }
+
+        .jobs-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: pxToRem(24);
+
+            .counter {
+                @include font-size(pxToRem(30));
+                padding-left: pxToRem(20);
+            }
+        }
+
+        .jobs-info {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: pxToRem(40);
+            row-gap: pxToRem(10);
+            margin-bottom: pxToRem(20);
+
+            @media (max-width: 1600px) {
+                column-gap: 0;
+            }
+
+            div {
+                @media (max-width: 1600px) {
+                    flex: 0 0 calc(100% / 3);
+                }
+
+                @include media-breakpoint-down(xl) {
+                    flex: 0 0 50%;
+                }
+            }
+
+            span {
+                display: block;
+                @include font-size(pxToRem(14));
+                margin-bottom: pxToRem(6);
+            }
+
+            h6 {
+                @include font-size(pxToRem(20));
+            }
+        }
+
+        .jobs-txt {
+            margin-bottom: pxToRem(20);
+
+            p {
+                @include font-size(pxToRem(18));
+            }
+        }
+
+        .jobs-btn {
+            display: flex;
+            justify-content: end;
+            margin-top: auto;
+
+            a {
+                @include font-size(pxToRem(16));
+                text-decoration: none;
+                color: $color-black;
+
+                img {
+                    padding-left: pxToRem(8);
+                }
+            }
+        }
+    }
+}

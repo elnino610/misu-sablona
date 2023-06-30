@@ -1,0 +1,16 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.form {
+    padding-top: pxToRem(60);
+    padding-bottom: pxToRem(60);
+    @include media-breakpoint-down(md) {
+        padding-top: pxToRem(30);
+        padding-bottom: pxToRem(30);
+    }
+}

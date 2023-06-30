@@ -1,0 +1,74 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.project-similar-products-title {
+    padding-bottom: pxToRem(40);
+    @include media-breakpoint-down(sm) {
+        padding-bottom: pxToRem(20);
+    }
+}
+
+.project-item {
+    position: relative;
+    transition: box-shadow .3s ease-in-out;
+    &:hover {
+        box-shadow: 0 3px 20px 0 rgb(0 0 0 / 16%);
+    }
+}
+
+.project-item-img {
+    width: 100%;
+    height: pxToRem(418);
+    object-fit: cover;
+    @include media-breakpoint-down(md) {
+        height: pxToRem(270);
+    }
+}
+
+.project-item-content {
+    margin-top: pxToRem(-140);
+    margin-right: pxToRem(50);
+    padding: pxToRem(40) pxToRem(50);
+    background: $color-white;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: pxToRem(1) solid white;
+    @include media-breakpoint-down(md) {
+        padding: pxToRem(30) pxToRem(32);
+        margin-right: pxToRem(32);
+    }
+
+    h5 {
+        margin-bottom: pxToRem(20);
+        @include media-breakpoint-down(md) {
+            margin-bottom: pxToRem(16);
+        }
+    }
+}
+
+.project-item-btn {
+    display: flex;
+    justify-content: start;
+    margin-left: pxToRem(50);
+    padding-bottom: pxToRem(50);
+    @include media-breakpoint-down(md) {
+        margin-left: pxToRem(32);
+        padding-bottom: pxToRem(32);
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-black;
+
+        img {
+            padding-left: pxToRem(8);
+        }
+    }
+}

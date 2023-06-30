@@ -1,0 +1,192 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.services {
+    @include media-breakpoint-down(md) {
+        padding-top: pxToRem(72);
+        padding-bottom: pxToRem(72);
+    }
+    .js-servicesSwiper {
+        padding-left: pxToRem(20);
+        margin-top: pxToRem(50);
+        padding-top: pxToRem(20);
+        padding-bottom: pxToRem(50);
+        height: fit-content;
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(18);
+            padding-left: 0;
+        }
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            row-gap: pxToRem(44);
+            .swiper-content {
+                position: relative;
+                height: pxToRem(364);
+                color: $color-white;
+                background-image: linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0),
+                    #000 80%,
+                    #000
+                );
+                padding: pxToRem(10) pxToRem(30) pxToRem(50) pxToRem(30);
+                display: flex;
+                flex-direction: column;
+                @include media-breakpoint-down(md) {
+                    padding-bottom: pxToRem(30);
+                    height: pxToRem(180);
+                    padding-top: 0;
+                }
+
+                .services-bg-container {
+                    height: 100%;
+                    width: calc(100% + 20px);
+                    position: absolute;
+                    z-index: -1;
+                    top: pxToRem(-20);
+                    left: pxToRem(-20);
+                    overflow: hidden;
+                    @include media-breakpoint-down(md) {
+                        left: 0;
+                        width: 100%;
+                    }
+                }
+
+                &:hover {
+                    .services-bg-container {
+                        .services-bg {
+                            transform: rotate(-5deg) scale(1.15);
+                            @include media-breakpoint-down(md) {
+                                transform: rotate(-2deg) scale(1.2);
+                            }
+                        }
+                    }
+                }
+
+                .services-bg-clip {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    z-index: 1;
+                    mix-blend-mode: multiply;
+                    transition: opacity 1500ms ease;
+                    opacity: 0;
+                }
+
+                .services-bg {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    object-fit: cover;
+                }
+
+                .services-bg {
+                    transition: filter 500ms ease, transform 500ms ease;
+                    filter: grayscale(1) contrast(.9);
+                }
+
+                .counter {
+                    @include font-size(pxToRem(30));
+                    font-weight: 300;
+                    @include media-breakpoint-down(md) {
+                        @include font-size(pxToRem(22));
+                    }
+                }
+
+                .service-footer {
+                    h3 {
+                        display: flex;
+                        flex-direction: column;
+                        line-height: 1;
+                        span {
+                            font-weight: 400;
+                        }
+                        @include media-breakpoint-down(md) {
+                            @include font-size(pxToRem(50));
+                        }
+                        @include media-breakpoint-down(sm) {
+                            @include font-size(pxToRem(60));
+                        }
+                    }
+                    .service-footer-bottom {
+                        span {
+                            @include font-size(pxToRem(18));
+                            font-weight: 400;
+                        }
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+        .swiper-pagination {
+            .swiper-pagination-bullet {
+                width: pxToRem(42);
+                height: pxToRem(6);
+                border-radius: 0;
+                opacity: 0.25;
+                &-active {
+                    background-color: $color-black;
+                    opacity: 1;
+                }
+            }
+            bottom: 0;
+        }
+    }
+    &.active {
+        .js-servicesSwiper {
+            .swiper-slide {
+                .swiper-content {
+                    .services-bg-container {
+                        .services-bg {
+                            filter: grayscale(0) contrast(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .swiper-buttons {
+        display: flex;
+        bottom: 0;
+        right: 0;
+        padding: inherit;
+        @include font-size(pxToRem(40));
+        column-gap: pxToRem(32);
+        .swiper-button-next {
+            position: relative;
+            right: 0;
+            color: $color-white;
+            width: auto;
+            @media (max-width: 650px) {
+                @include font-size(pxToRem(50));
+                color: $color-black;
+            }
+            &:after {
+                content: none;
+            }
+        }
+        .swiper-button-prev {
+            position: relative;
+            left: 0;
+            color: $color-white;
+            width: auto;
+            @media (max-width: 650px) {
+                @include font-size(pxToRem(50));
+                color: $color-black;
+            }
+            &:after {
+                content: none;
+            }
+        }
+    }
+}

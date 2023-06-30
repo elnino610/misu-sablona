@@ -1,0 +1,193 @@
+@import "./colors.scss";
+@import "./_functions.scss";
+
+@import "./bootstrap/_functions.scss";
+@import "./bootstrap/_variables.scss";
+@import "./bootstrap/vendor/_rfs.scss";
+@import "./bootstrap/mixins/_breakpoints.scss";
+
+
+.form {
+    // padding-top: pxToRem(120);
+    // margin-top: pxToRem(-120);
+    form {
+        padding: pxToRem(160) pxToRem(140);
+        box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.16);
+        background: $color-white;
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(70);
+        margin: 0;
+
+        @include media-breakpoint-down(xl) {
+            padding: pxToRem(80) pxToRem(70);
+        }
+
+        @include media-breakpoint-down(md) {
+            gap: pxToRem(32);
+            box-shadow: none;
+            background: transparent;
+            padding: 0;
+        }
+
+        .form-row {
+            row-gap: pxToRem(70);
+
+            @include media-breakpoint-down(md) {
+                row-gap: pxToRem(32);
+            }
+        }
+
+        label {
+            @include font-size(pxToRem(14));
+            font-weight: 900;
+            margin-bottom: pxToRem(10);
+        }
+
+        input,
+        textarea,
+        button {
+
+            &:hover,
+            &:focus {
+                outline: none;
+                box-shadow: none;
+                border-color: $color-black;
+            }
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            border: none;
+            border-bottom: pxToRem(3) solid $color-black;
+            border-radius: 0;
+            padding: pxToRem(20);
+            @include font-size(pxToRem(20));
+
+            @include media-breakpoint-down(md) {
+                @include font-size(pxToRem(16));
+            }
+
+            transition: 0.15s background-color ease;
+
+            &:hover,
+            &:focus {
+                background: rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        textarea {
+            @include media-breakpoint-down(md) {
+                min-height: pxToRem(300);
+            }
+        }
+
+        input[type="checkbox"] {
+            border: pxToRem(2) solid $color-black;
+            border-radius: 0;
+
+            &:checked {
+                background-color: $color-black;
+            }
+        }
+
+        .form-check-label {
+            @include font-size(pxToRem(16));
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: pxToRem(1);
+            cursor: pointer;
+
+            @include media-breakpoint-down(md) {
+                @include font-size(pxToRem(14));
+            }
+        }
+
+        button {
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.modal {
+    &-header {
+        padding: pxToRem(40) pxToRem(70);
+        @include media-breakpoint-down(lg) {
+            padding: pxToRem(20);
+        }
+        h4 {
+            margin-bottom: 0;
+        }
+    }
+
+    .modal-dialog {
+        @include media-breakpoint-up(md) {
+            min-width: pxToRem(600);
+        }
+    }
+
+    .form {
+        box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.16);
+        border-radius: 0;
+
+        form {
+            padding: pxToRem(80) pxToRem(70);
+            box-shadow: none;
+
+            @include media-breakpoint-down(lg) {
+                padding: pxToRem(20);
+            }
+
+            .form-row {
+                @include media-breakpoint-down(lg) {
+                    row-gap: pxToRem(32);
+                }
+            }
+        }
+
+        .close-btn {
+            padding: 0;
+            background: none;
+            border: none;
+            margin-left: auto;
+
+            .close-icon {
+                height: pxToRem(30);
+                width: pxToRem(40);
+                display: block;
+                position: relative;
+                cursor: pointer;
+
+                span {
+                    position: absolute;
+                    left: 0;
+                    height: pxToRem(4);
+                    width: 100%;
+                    background: $color-black;
+                    transition: .25s ease-in-out;
+
+                    @include media-breakpoint-down(md) {
+                        height: pxToRem(2);
+                    }
+                }
+
+                span:nth-child(1) {
+                    top: pxToRem(15);
+                    transform: rotate(135deg);
+                }
+
+                span:nth-child(2) {
+                    top: pxToRem(15);
+                    transform: rotate(-135deg);
+                }
+
+            }
+        }
+    }
+}

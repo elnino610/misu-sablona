@@ -1,0 +1,209 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.home {
+    // @include media-breakpoint-down(xl) {
+    //     height: pxToRem(800) !important;
+    // }
+    // @include media-breakpoint-down(lg) {
+    //     height: pxToRem(700) !important;
+    // }
+    // @include media-breakpoint-down(md) {
+    //     height: pxToRem(600) !important;
+    // }
+    .js-homeSwiper {
+        animation: fade-in ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+
+        .slide-captions {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            max-width: 30%;
+            user-select: none;
+
+            @include media-breakpoint-down(xxl) {
+                max-width: 50%;
+            }
+
+            @include media-breakpoint-down(lg) {
+                max-width: 60%;
+            }
+
+            @include media-breakpoint-down(md) {
+                top: 80%;
+                transform: translateY(-100%);
+                max-width: 80%;
+            }
+
+            @include media-breakpoint-down(sm) {
+                max-width: 90%;
+            }
+
+            .slash {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                margin-top: pxToRem(-20);
+                padding-left: pxToRem(16);
+
+                @media (max-width: 1900px) {
+                    margin-top: pxToRem(-16);
+                    height: pxToRem(70);
+                }
+
+                @include media-breakpoint-down(xxl) {
+                    display: none;
+                }
+            }
+
+            h1 {
+                @include font-size(pxToRem(70));
+
+                font: {
+                    weight: 900;
+                }
+
+                @media (max-width: 1900px) {
+                    @include font-size(pxToRem(50));
+                }
+
+                @include media-breakpoint-down(md) {
+                    @include font-size(pxToRem(60));
+                }
+
+                @include media-breakpoint-down(sm) {
+                    @include font-size(pxToRem(70));
+                }
+            }
+
+            h3 {
+                margin-top: pxToRem(16);
+                @include font-size(pxToRem(40));
+
+                font: {
+                    weight: 300;
+                }
+
+                @media (max-width: 1900px) {
+                    @include font-size(pxToRem(35));
+                }
+
+            }
+        }
+
+        .slide-captions-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            user-select: none;
+            z-index: 1;
+            @media (max-width: 1600px) {
+                max-width: 50%;
+            }
+            @include media-breakpoint-down(xl) {
+                max-width: 100%;
+            }
+            @media (max-width: 500px) {
+                width: 100%;
+            }
+            &-inner {
+                display: flex;
+                column-gap: pxToRem(50);
+                align-items: end;
+                @include media-breakpoint-down(md) {
+                    flex-direction: row-reverse;
+                }
+                @media (max-width: 500px) {
+                    column-gap: pxToRem(20);
+                    justify-content: space-between;
+                }
+                &-item {
+                    display: flex;
+                    column-gap: pxToRem(15);
+                    align-items: center;
+                    @include media-breakpoint-down(md) {
+                        flex-direction: column-reverse;
+                        align-items: start;
+                    }
+                    .value {
+                        margin-bottom: 0;
+                        line-height: 1;
+                        @include media-breakpoint-down(sm) {
+                            font-size: pxToRem(32);
+                        }
+                    }
+                    .text {
+                        @include font-size(pxToRem(18));
+                        line-height: 1.2;
+                        @include media-breakpoint-down(md) {
+                            margin-bottom: pxToRem(5);
+                        }
+                        @include media-breakpoint-down(sm) {
+                            white-space: nowrap;
+                            font-size: pxToRem(13);
+                            margin-bottom: 0;
+                        }
+                        br {
+                            @include media-breakpoint-down(md) {
+                                display: none;
+                            }
+                        }
+                    }
+                    &-second {
+                        @include media-breakpoint-down(xl) {
+                            display: none;
+                        }
+                    }
+                }
+                &-client {
+                    a {
+                        color: $color-black;
+                        text-decoration: none;
+                        @include font-size(pxToRem(18));
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                        @include media-breakpoint-down(sm) {
+                            font-size: pxToRem(12);
+                        }
+                    }
+                    .name {
+                        font-weight: 700;
+                        display: flex;
+                        column-gap: pxToRem(20);
+                        align-items: center;
+                        @include media-breakpoint-down(sm) {
+                            column-gap: pxToRem(10);
+                        }
+                    }
+                    .arrow-btn {
+                        @include media-breakpoint-down(sm) {
+                            height: pxToRem(8);
+                        }
+                    }
+                }
+            }
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .swiper-content {
+                .slash {
+                    right: pxToRem(-60);
+                    top: pxToRem(-25);
+                }
+            }
+        }
+    }
+}

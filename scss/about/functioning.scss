@@ -1,0 +1,65 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.functioning {
+    margin-top: pxToRem(60);
+    @include media-breakpoint-down(lg) {
+        margin-top: pxToRem(40);
+    }
+    @include media-breakpoint-down(md) {
+        margin-top: pxToRem(20);
+    }
+    .functioning-row {
+        display: flex;
+        margin-top: pxToRem(50);
+        margin-left: auto;
+        margin-right: auto;
+        max-width: pxToRem(1450);
+        row-gap: pxToRem(50);
+
+        @include media-breakpoint-down(md) {
+            margin-top: pxToRem(18);
+            row-gap: pxToRem(20);
+        }
+        
+        .col {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+
+            @media (min-width: 1800px) {
+                width: 25%;
+            }
+        }
+    }
+
+    .functioning-content {
+        display: flex;
+        align-items: center;
+        column-gap: pxToRem(18);
+        height: 100%;
+
+        .slash {
+            height: pxToRem(90);
+            margin-bottom: pxToRem(-15);
+            @include media-breakpoint-down(md) {
+                height: pxToRem(70);
+            }
+        }
+
+        h5 {
+            @include font-size(pxToRem(30));
+            margin-bottom: 0;
+
+        }
+
+        .counter {
+            @include font-size(pxToRem(30));
+        }
+    }
+}

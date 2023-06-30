@@ -1,0 +1,238 @@
+@import "../colors.scss";
+@import "../_functions.scss";
+
+@import "../bootstrap/_functions.scss";
+@import "../bootstrap/_variables.scss";
+@import "../bootstrap/vendor/_rfs.scss";
+@import "../bootstrap/mixins/_breakpoints.scss";
+
+.projects {
+    &-tabs {
+        .swiper {
+            display: flex;
+            margin-top: pxToRem(40);
+            @include media-breakpoint-down(lg) {
+                padding-bottom: pxToRem(30);
+            }
+            @include media-breakpoint-down(md) {
+                margin-top: pxToRem(18);
+            }
+        }
+        .swiper-wrapper.nav-tabs {
+            height: auto;
+            flex-wrap: nowrap;
+            border: none;
+            .nav-link {
+                padding: 0;
+                position: relative;
+                overflow: hidden;
+                border: none;
+                border-radius: 0;
+                &:hover, &.active {
+                    .nav-link-bg {
+                        transform: rotate(-2deg) scale(1.15);
+                    }
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    background-image: linear-gradient(to bottom, transparent, $color-black 80%, $color-black);
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: -1;
+                }
+                &-content {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: pxToRem(25) pxToRem(30);
+                    .counter {
+                        line-height: 1;
+                        font-weight: 400;
+                        color: $color-white;
+                        @include font-size(pxToRem(18));
+                    }
+                    h4 {
+                        color: $color-white;
+                        @include font-size(pxToRem(32));
+                        margin-bottom: pxToRem(8);
+                        line-height: 1;
+                        span {
+                            line-height: 1;
+                            @include font-size(pxToRem(32));
+                            font-weight: 400;
+                        }
+                    }
+                    span {
+                        line-height: 1.2;
+                        @include font-size(pxToRem(18));
+                        color: $color-white;
+                    }
+                    .all-title {
+                        h4, span {
+                            @include font-size(pxToRem(25));
+                        }
+                    }
+                }
+                &-bg {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: -1;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: transform .2s;
+                }
+            }
+        }
+        .swiper-pagination {
+            display: none;
+            @include media-breakpoint-down(lg) {
+                display: block;
+            }
+            .swiper-pagination-bullet {
+                width: pxToRem(42);
+                height: pxToRem(6);
+                border-radius: 0;
+                opacity: 0.25;
+                &-active {
+                    background-color: $color-black;
+                    opacity: 1;
+                }
+            }
+            bottom: 0;
+        }
+        .swiper-button-disabled {
+            display: none;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            top: 50%;
+            margin-top: 0;
+            transform: translateY(-50%);
+            @include font-size(pxToRem(40));
+            height: 100%;
+            color: $color-black;
+            @include media-breakpoint-down(lg) {
+                display: none;
+            }
+        }
+        .swiper-button-next {
+            right: 0;
+            @media (max-width: 650px) {
+                @include font-size(pxToRem(50));
+            }
+            &:after {
+                content: '';
+                background-image: linear-gradient(to left, $color-white 50%, transparent);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: pxToRem(-40);
+                right: 0;
+                z-index: -1;
+                width: pxToRem(80);
+            }
+        }
+        .swiper-button-prev {
+            left: 0;
+            background-image: linear-gradient(to right, $color-white 50%, transparent);
+            @media (max-width: 650px) {
+                @include font-size(pxToRem(50));
+            }
+            &:after {
+                content: '';
+                background-image: linear-gradient(to right, $color-white 50%, transparent);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: pxToRem(-40);
+                z-index: -1;
+                width: pxToRem(80);
+            }
+        }
+    }
+}
+
+.project {
+    &-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        box-shadow: 0 3px 20px 0 rgb(0 0 0 / 16%);
+        overflow: hidden;
+        &:hover {
+            .project-card-img {
+                transform: scale(1.03);
+            }
+        }
+        &-img {
+            width: 100%;
+            flex-shrink: 0;
+            height: pxToRem(450);
+            object-position: center;
+            object-fit: cover;
+            transition: transform .2s;
+            @include media-breakpoint-down(lg) {
+                height: pxToRem(350);
+            }
+            @include media-breakpoint-down(md) {
+                height: pxToRem(250);
+            }
+            @include media-breakpoint-down(sm) {
+                height: pxToRem(200);
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 1;
+            position: relative;
+            background-color: $color-white;
+            padding: pxToRem(40) pxToRem(50);
+            @include media-breakpoint-down(md) {
+                padding: pxToRem(30);
+            }
+            h5 {
+                margin-bottom: pxToRem(20);
+                a {
+                    text-decoration: none;
+                    color: $color-black;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            &-footer {
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: pxToRem(30);
+                row-gap: pxToRem(5);
+                justify-content: space-between;
+                margin-top: auto;
+                @include font-size(pxToRem(18));
+                a {
+                    color: $color-black;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        &-btn {
+            a {
+                display: flex;
+                align-items: center;
+                column-gap: pxToRem(15);
+            }
+        }
+    }
+}

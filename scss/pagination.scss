@@ -1,0 +1,36 @@
+@import "./colors.scss";
+@import "./_functions.scss";
+
+@import "./bootstrap/_functions.scss";
+@import "./bootstrap/_variables.scss";
+@import "./bootstrap/vendor/_rfs.scss";
+@import "./bootstrap/mixins/_breakpoints.scss";
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: pxToRem(15);
+    &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: pxToRem(50);
+        height: pxToRem(50);
+        text-decoration: none;
+        color: $color-black;
+        @include font-size(pxToRem(18));
+        border: pxToRem(3) solid $color-black;
+        transition: background-color .2s, color .2s;
+        padding: 0 pxToRem(15);
+        &:hover {
+            color: $color-white;
+            background-color: $color-black;
+        }
+        @include media-breakpoint-down(md) {
+            padding: 0 pxToRem(10);
+            min-width: pxToRem(40);
+            height: pxToRem(40);
+            @include font-size(pxToRem(15));
+        }
+    }
+}
